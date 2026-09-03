@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NEXORA Dashboard</title>
+  <script src="https://jsdelivr.net"></script>
+  <script src="./dashboard.js" defer></script>
+  <link rel="stylesheet" href="./admin.css">
+</head>
+<body>
+  <div id="app" class="wrap">
+    <!-- Navigation Strip -->
+    <header class="top">
+      <div class="brand"><span class="mark">N</span>NEXORA Studio</div>
+      <div class="user">
+        <span id="userEmail">admin@nexora.studio</span>
+        <button id="logoutBtn" class="btn" style="margin-left: 12px;">Sign Out</button>
+      </div>
+    </header>
+
+    <!-- Header & Action Panel -->
+    <section class="head">
+      <div>
+        <h1>Project Enquiries</h1>
+        <p class="muted">Monitor incoming project scopes and budgets.</p>
+      </div>
+    </section>
+
+    <!-- Analytical Highlight Metrics -->
+    <section class="stats">
+  <div class="stat"><strong id="statTotal">0</strong><span>Total Requests</span></div>
+  <div class="stat"><strong id="statPending">0</strong><span>New Leads</span></div>
+  <div class="stat"><strong id="statActive">0</strong><span>In Progress</span></div>
+  <div class="stat"><strong id="statConverted">0</strong><span>Closed Deals</span></div>
+</section>
+
+
+    <!-- Functional Search Filters -->
+    <div class="toolbar">
+      <input type="text" id="searchInput" placeholder="Search by name, email, or company...">
+      <select id="statusFilter">
+  <option value="ALL">All Statuses</option>
+  <option value="new">New</option>
+  <option value="contacted">Contacted</option>
+  <option value="qualified">Qualified</option>
+  <option value="closed">Closed</option>
+</select>
+
+    </div>
+
+    <!-- Data Layout Matrix Table -->
+    <section class="table">
+      <div class="row header">
+        <div>Client Name</div>
+        <div>Company</div>
+        <div>Email</div>
+        <div>Budget</div>
+        <div>Submitted Date</div>
+        <div>Status</div>
+      </div>
+      <div id="tableBody">
+        <!-- Javascript renders row instances dynamically here -->
+      </div>
+    </section>
+  </div>
+
+  <!-- Detail Information Modal (Hidden by Default) -->
+  <div id="detailModal" class="modal hidden">
+    <div class="detail">
+      <div class="detail-head">
+        <h2 id="modalClientName">Client Name Loading...</h2>
+        <button id="closeModalBtn" class="btn">Close</button>
+      </div>
+      
+      <div class="meta">
+        <div><small>Company</small><span id="modalCompany">-</span></div>
+        <div><small>Email Address</small><span id="modalEmail">-</span></div>
+        <div><small>Financial Budget Target</small><span id="modalBudget">-</span></div>
+        <div><small>Inquiry Submission Date</small><span id="modalDate">-</span></div>
+      </div>
+
+      <div class="meta" style="grid-template-columns: 1fr;">
+        <div>
+          <small>Project Project Scope / Brief Description</small>
+          <div id="modalBrief" class="brief"></div>
+        </div>
+      </div>
+
+      <!-- Live Pipeline State Management Configuration -->
+      <div class="save">
+        <select id="modalStatusSelect">
+  <option value="new">New</option>
+  <option value="contacted">Contacted</option>
+  <option value="qualified">Qualified</option>
+  <option value="closed">Closed</option>
+</select>
+
+        <button id="saveStatusBtn" class="btn primary">Update Pipeline Status</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Operational Status Alert Notification -->
+  <div id="toastNotification" class="toast">Status Saved Successfully</div>
+</body>
+</html>
